@@ -1,0 +1,129 @@
+/*===== Mobile Nav styling =====*/
+.mobile-nav{
+    display: none;
+    &__hamburger{
+        cursor: pointer;
+        background-color: transparent;
+        width: 45px;
+        height: 45px;
+        transition: transform 0.4s;
+        .line{
+            height: 3px;
+            width: 100%;
+            background-color: $secondary;
+            margin-bottom: 7px;
+            transition: transform 0.4s;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__hamburger--active{
+        transform: rotate(45deg);
+        .line{
+            &:nth-child(1){
+                transform: translateY(10px) rotate(90deg);
+            }
+            &:nth-child(3){
+                transform: translateY(-10px) rotate(90deg);
+            }
+        }
+    }
+
+    &__menu{
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 5;
+        transform: translateX(-100%);
+        transition: transform $s-delay;
+    }
+
+    &__menu--open{
+        transform: translateX(0);
+    }
+
+    &__menu-wrapper{
+        max-width: 500px;
+        width: 90%;
+        min-width: 340px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background-color: #fff;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        box-shadow: 3px 6px 12px $shadow;
+    }
+
+    &__nav-list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+
+    &__nav-link{
+        width: 140px!important;
+        height: 35px !important;
+    }
+
+    .auth-btn{
+        a{
+            &:hover,&:focus{
+                background-color: $secondary!important;
+                color: #fff!important;
+            }
+        }
+
+    }
+
+    &__list{
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        position: relative;
+
+        &:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $secondary;
+        }
+
+        &:last-child{
+            margin-bottom: 0;
+            padding-bottom: 0;
+            &:after{
+                display: none;
+            }
+        }
+    }
+
+    &__item{
+        margin-bottom: 20px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    &__link{
+        display: flex;
+        align-items: center;
+        height: 40px;
+        padding-left: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all $s-delay;
+        &:hover,&:focus{
+            color: #fff;
+        }
+    }
+
+    
+}

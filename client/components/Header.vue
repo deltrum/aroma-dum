@@ -21,13 +21,19 @@
                         </li>
                     </ul>
                     <ul class="header__list">
-                        <li class="header__item header__item--auth">
-                            <nuxt-link class="header__link" to="#">
+                        <li class="header__item auth-btn auth-btn-reverse">
+                            <nuxt-link
+                                class="header__link"
+                                :to="{ name: 'auth-login' }"
+                            >
                                 Login
                             </nuxt-link>
                         </li>
-                        <li class="header__item header__item--auth">
-                            <nuxt-link class="header__link" to="#">
+                        <li class="header__item auth-btn">
+                            <nuxt-link
+                                class="header__link"
+                                :to="{ name: 'auth-register' }"
+                            >
                                 Register
                             </nuxt-link>
                         </li>
@@ -48,7 +54,7 @@
                             src="@/assets/images/brand-logo.png"
                         />
                     </nuxt-link>
-                    <nuxt-link class="header__cart-btn" :to="{ name: 'index' }">
+                    <nuxt-link class="header__cart-btn" :to="{ name: 'cart' }">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="40.135"
@@ -62,6 +68,7 @@
                             />
                         </svg>
                     </nuxt-link>
+                    <MobileNav />
                 </div>
             </div>
         </div>
@@ -90,7 +97,7 @@
                                 class="header__nav-list-link underline"
                                 to="#"
                             >
-                                Coal
+                                Wasteables
                             </nuxt-link>
                         </li>
                     </ul>
@@ -102,7 +109,8 @@
 
 <script lang="ts" >
 import { Vue, Component } from "vue-property-decorator";
+import MobileNav from "@/components/MobileNav.vue";
 
-@Component({ name: "Header" })
+@Component({ name: "Header", components: { MobileNav } })
 export default class Header extends Vue {}
 </script>

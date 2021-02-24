@@ -7,6 +7,19 @@ body {
   font-family: 'Sarabun', sans-serif;
   font-weight: 400;
   font-size: 16px;
+  color: $primary;
+}
+
+h3{
+  font-size: 32px;
+}
+
+h4{
+  font-size: 28px;
+}
+
+h5{
+  font-size: 22px;
 }
 
 .underline{
@@ -36,5 +49,12 @@ body {
     }
 
   }
+}
 
+.highlight{
+  transition: color $s-delay;
+
+  &:hover,&:focus{
+    color: $secondary;
+  }
 }

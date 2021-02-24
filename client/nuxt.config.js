@@ -20,6 +20,7 @@ export default {
   ],
 
   plugins: [
+    { src: '@/plugins/vue-slider.client.js', ssr: false },
   ],
 
   components: true,

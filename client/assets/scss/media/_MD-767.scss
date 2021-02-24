@@ -1,0 +1,27 @@
+@media (max-width: 767px) {
+
+    //  HEADER
+    .header{
+        &__row{
+            &:nth-child(1){
+                display: none;
+            }
+            &:nth-child(3){
+                height: 20px;
+                .header__nav-list{
+                    display: none;
+                }
+            }
+        }
+
+        &__contact{
+            display: none;
+        }
+    }
+
+    // MOBILE NAV
+    .mobile-nav{
+        display: block;
+    }
+
+}

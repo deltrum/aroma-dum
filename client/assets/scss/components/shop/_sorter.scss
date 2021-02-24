@@ -1,0 +1,43 @@
+/*===== Products styling =====*/
+.sorter{
+    display: flex;
+    align-items: center;
+
+    &__title{
+        margin-right: 30px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__list{
+        display: flex;
+        align-items: center;
+    }
+
+    &__item{
+        margin-right: 40px;
+    }
+
+    &__link{
+        display: flex;
+        align-items: center;
+        letter-spacing: 1px;
+        transition: color $s-delay;
+        svg{
+            margin-left: 10px;
+            width: 15px;
+            fill: $secondary-darker;
+            transition: transform $s-delay;
+        }
+
+        &:hover,&:focus{
+            color: $secondary-darker;
+        }
+    }
+
+    &__link--up{
+        svg{
+            transform: rotate(-180deg);
+        }
+    }
+}

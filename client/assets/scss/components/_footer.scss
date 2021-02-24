@@ -1,0 +1,60 @@
+/*===== Footer styling =====*/
+.footer{
+    padding: 30px 0;
+    background-color: $primary;
+
+    &__inner{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &__brand-logo{
+        display: flex;
+        justify-content: center;
+    }
+    
+    &__brand-logo-img{
+        width: 140px;
+    }
+
+    &__column{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__column-title{
+        margin-bottom: 25px;
+        color: $secondary;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    &__list{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item{
+        margin-bottom: 15px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    &__link{
+        display: inline-block;
+        color: $tint-lighter;
+        letter-spacing: 1px;
+    }
+
+}
+
+.copyright{
+    margin-top: 5px;
+    color: $tint-lighter;
+    font-size: 14px;
+    letter-spacing: 1px;   
+}

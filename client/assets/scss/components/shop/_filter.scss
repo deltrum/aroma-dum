@@ -1,0 +1,100 @@
+/*===== Filter styling =====*/
+.filter{
+    &__section{
+        margin-bottom: 40px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    &__section-title{
+        display: inline-block;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        position: relative;
+        
+        font-weight: 500;
+
+        &:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background-color: $secondary;
+        }
+    }
+
+    &__section-form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__section-label{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+
+        font-size: 16px;
+        letter-spacing: 1px;
+        position: relative
+    }
+
+    &__section-checkbox{
+        opacity: 0;
+        margin-right: 20px;
+
+        &:checked + .filter__section-style{
+            &:after{
+                opacity: 1;
+            }
+        }
+    }
+
+    &__section-style{
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid $tint;
+        border-radius: 5px;
+        &:after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 10px;
+            height: 10px;
+            background-color: $secondary;
+            border-radius: 2px;
+            opacity: 0;
+            transition: opacity $s-delay;
+        }
+    }
+
+}
+
+.vue-slider{
+    height: 6px!important;
+}
+
+.vue-slider-dot{
+    width: 18px!important;
+    height: 18px!important;
+}
+
+.vue-slider-process{
+    background-color: $secondary!important;
+}
+.vue-slider-dot-tooltip-inner{
+    border-color: $secondary!important;
+    background-color: $secondary!important;
+}
