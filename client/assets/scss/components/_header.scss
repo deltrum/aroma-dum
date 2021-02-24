@@ -1,0 +1,139 @@
+/*===== Header styling =====*/
+.header{
+    &__row{
+        &-inner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        height: 40px;
+        background-color: $primary;
+        &:nth-child(2){
+            height: 80px;
+            background-color: #fff;
+            position: relative;
+        }
+        &:nth-child(3){
+            height: 40px;
+            background-color: $secondary;
+
+            .header__row-inner{
+                justify-content: center;
+            }
+        }
+    }
+
+    &__list{
+        display: flex;
+        align-items: center;
+    }
+
+    &__item{
+        margin-right: 60px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+
+    &__item--auth{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-right: 30px;
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            width: 100px;
+            background-color: $secondary;
+            transition: all $s-delay;
+
+            &:hover,&:focus{
+                background-color: #fff;
+                color: $primary;
+            }
+        }
+    }
+
+    &__link{
+        color: #fff;
+    }
+
+    &__contact{
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    &__brand-logo{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        &-img{
+            height: 80px;
+        }
+    }
+
+    &__cart-btn{
+        display: block;
+        position: relative;
+        &:after{
+            content: '99';
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: -5px;
+            right: -8px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: $secondary;
+        }
+
+        svg{
+            width: 35px;
+            transition: fill $s-delay;
+        }
+
+        &:hover,&:focus{
+            svg{
+                fill: $primary;
+            }
+        }
+    }
+
+    &__nav-list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__nav-list-item{
+        margin-right: 45px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+
+    &__nav-list-link{
+        text-transform: uppercase;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        &:after{
+            background-color: #fff;
+        }
+
+        &:hover,&:focus{
+            color: initial;
+        }
+    }
+}
