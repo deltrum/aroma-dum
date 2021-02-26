@@ -1,21 +1,21 @@
 /*===== Pagination styling =====*/
-.pagination{
+.pagination {
     margin: 50px 0 0 0;
 
-    &__list{
+    &__list {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    &__item{
+    &__item {
         margin-right: 40px;
-        &:last-child{
+        &:last-child {
             margin-right: 0;
         }
     }
 
-    &__link{
+    &__link {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,27 +28,29 @@
         box-shadow: 3px 6px 12px $shadow;
         transition: all $s-delay;
 
-        &:hover,&:focus{
+        &:hover,
+        &:focus {
             background-color: $secondary-darker;
             color: #fff;
         }
     }
 
-    &__link--active{
+    &__link--active {
         background-color: $secondary-darker;
     }
 
-    &__link--arrow{
+    &__link--arrow {
         background-color: transparent;
         box-shadow: none;
-        svg{
+        svg {
             fill: $primary;
             transition: fill $s-delay;
         }
 
-        &:hover,&:focus{
+        &:hover,
+        &:focus {
             background-color: transparent;
-            svg{
+            svg {
                 fill: $secondary-darker;
             }
         }

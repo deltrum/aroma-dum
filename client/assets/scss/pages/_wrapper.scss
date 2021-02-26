@@ -1,22 +1,23 @@
 /*===== Wrapper styling =====*/
-.wrapper{
+.wrapper {
     display: grid;
-    grid-template-areas: 
-    'header'
-    'main'
-    'footer';
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 120px 1fr auto;
 }
 
-.header{
+.header {
     grid-area: header;
 }
 
-.main{
+.main {
     grid-area: main;
+    padding: 80px 0;
 }
 
-.footer{
+.footer {
     grid-area: footer;
 }

@@ -1,42 +1,49 @@
 /*===== Products styling =====*/
-.sorter{
+.sorter {
     display: flex;
     align-items: center;
 
-    &__title{
+    &__title {
         margin-right: 30px;
         font-size: 18px;
         font-weight: 700;
     }
 
-    &__list{
+    &__list {
         display: flex;
         align-items: center;
     }
 
-    &__item{
+    &__item {
         margin-right: 40px;
     }
 
-    &__link{
+    &__label {
+        cursor: pointer;
         display: flex;
         align-items: center;
         letter-spacing: 1px;
         transition: color $s-delay;
-        svg{
+        svg {
             margin-left: 10px;
             width: 15px;
             fill: $secondary-darker;
             transition: transform $s-delay;
         }
 
-        &:hover,&:focus{
+        &:hover,
+        &:focus {
             color: $secondary-darker;
         }
     }
 
-    &__link--up{
-        svg{
+    &__checkbox{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        &:checked + svg{
             transform: rotate(-180deg);
         }
     }

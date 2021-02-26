@@ -2,7 +2,9 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
+    es6: true
+
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',
@@ -11,5 +13,7 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: { semi: [2, 'never'], html: { normal: 'never', void: 'always' } }
+  rules: {
+  }
+
 }

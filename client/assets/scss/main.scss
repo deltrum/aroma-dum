@@ -1,22 +1,27 @@
-@import 'default';
-@import 'vars';
-@import 'fonts';
-@import 'global';
+@import "default";
+@import "vars";
+@import "fonts";
+@import "global";
 
 // Components & Pages
-@import 'pages/wrapper';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/mobile-nav';
-@import 'components/page-path';
+@import "pages/wrapper";
+@import "components/header";
+@import "components/footer";
+@import "components/mobile-nav";
+@import "components/page-path";
 
-@import 'pages/shop';
-@import 'components/shop/filter';
-@import 'components/shop/sorter';
-@import 'components/shop/products';
-@import 'components/shop/pagination';
+@import "pages/shop";
+@import "components/shop/filter";
+@import "components/shop/sorter";
+@import "components/shop/products";
+@import "components/shop/pagination";
 
-// Media 
-@import 'media/LG-991';
-@import 'media/MD-767';
-@import 'media/SM-575';
+@import "pages/cart";
+@import "components/auth/auth";
+
+
+// Media
+@import "media/LG-1023";
+@import "media/L-991";
+@import "media/MD-767";
+@import "media/SM-575";

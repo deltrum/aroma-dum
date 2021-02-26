@@ -1,41 +1,42 @@
 /*===== Page Path styling =====*/
-.page-path{
+.page-path {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
 
-    &__item{
+    &__item {
         display: block;
         margin-right: 10px;
         padding-right: 16px;
         position: relative;
-        &:after{
-            content: '/';
+        &:after {
+            content: "/";
             position: absolute;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
         }
 
-        &:last-child{
+        &:last-child {
             margin-right: 0px;
             padding-right: 0px;
-            a{
+            a {
                 color: $tint;
             }
-            &:after{
+            &:after {
                 display: none;
             }
         }
     }
 
-    &__link{
+    &__link {
         font-size: 18px;
         font-weight: 600;
         letter-spacing: 1px;
         transition: color $s-delay;
-        &:focus,&:hover{
-            color: $secondary!important;
+        &:focus,
+        &:hover {
+            color: $secondary !important;
         }
     }
 }

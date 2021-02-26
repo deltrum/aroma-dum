@@ -1,14 +1,13 @@
 /*===== Products styling =====*/
-.products{
-
-    &__items{
+.products {
+    &__items {
         display: grid;
         grid-gap: 15px;
         grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         grid-auto-rows: 440px;
     }
-    
-    &__item{
+
+    &__item {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -18,14 +17,14 @@
         overflow: hidden;
     }
 
-    &__item-img{
+    &__item-img {
         width: 95%;
         margin: 0 auto;
         height: 220px;
         overflow: hidden;
     }
 
-    &__item-img-img{
+    &__item-img-img {
         display: block;
         width: 100%;
         height: 100%;
@@ -34,7 +33,7 @@
         background-size: contain;
     }
 
-    &__item-title{
+    &__item-title {
         margin: 0 auto;
         margin-top: 20px;
         text-align: center;
@@ -43,17 +42,16 @@
         line-height: 24px;
     }
 
-    &__item-price{
+    &__item-price {
         margin-top: 10px;
         text-align: center;
         font-size: 24px;
         font-weight: 700;
         line-height: 28px;
     }
-
 }
 
-.buy-btn{
+.buy-btn {
     cursor: pointer;
     width: 85%;
     margin: 0 auto;
@@ -69,7 +67,8 @@
     line-height: 20px;
     letter-spacing: 2px;
     transition: background $s-delay;
-    &:hover,&:focus{
+    &:hover,
+    &:focus {
         background-color: $secondary-darker;
     }
 }
