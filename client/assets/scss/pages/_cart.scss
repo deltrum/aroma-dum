@@ -17,44 +17,35 @@
         }
     }
 
-    &__final {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        padding: 20px 0;
-        font-size: 18px;
-        background-color: $secondary;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        strong{
-            margin-left: 10px;
-            font-size: 22px;
-        }
-    }
-
-    &__final-btn{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 160px;
-        height: 35px;
-        border: 2px solid $primary;
-        border-radius: 3px;
-        font-size: 18px;
-        font-weight: 700;
-        text-transform: uppercase;
-        transition: color $s-delay, background $s-delay;
-        &:hover,&:focus{
-            background-color: $primary;
-            color: #fff;
-        }
-    }
-
     &__products{
         background-color: $primary;
         overflow: hidden;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        min-height: 400px;
+    }
+
+    &__empty{
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        svg{
+            position: absolute;
+            fill: $tint;
+            width: 250px;
+            height: 250px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+    }
+    
+    &__empty-title{
+        font-weight: 500;
+        opacity: 0.9;
+        color: $tint-lighter;
     }
 
     &__list {
@@ -69,7 +60,7 @@
         grid-column-gap: 40px;
         align-items: center;
         grid-template-areas: "img content amount price delete";
-        grid-template-columns: 140px 3fr 1fr 1fr 50px;
+        grid-template-columns: 140px 3fr 1fr 1.1fr 50px;
         margin-bottom: 20px;
         &:last-child{
             margin-bottom: 0;
@@ -78,11 +69,9 @@
 
     &__item-img {
         grid-area: img;
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
         overflow: hidden;
-        padding: 5px;
-        border: 2px solid $secondary;
     }
 
     &__item-img-img {
@@ -91,7 +80,7 @@
         height: 100%;
         background-position: center center;
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
     }
 
     &__item-content{
@@ -110,7 +99,7 @@
         justify-content: space-between;
         background-color: $secondary;
         border-radius: 20px;
-        width: 170px;
+        width: 160px;
         height: 40px;
         margin: 0 auto;
     }
@@ -132,7 +121,7 @@
     &__item-price{
         grid-area: price;
         text-align: center;
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 700;
         color: #fff;
     }
@@ -142,7 +131,7 @@
         cursor: pointer;
         background: transparent;
         svg{
-            width: 25px;
+            width: 22px;
             fill: $secondary;
             transition: fill $s-delay;
         }
@@ -151,6 +140,40 @@
             svg{
                 fill: #fff;
             }
+        }
+    }
+
+    
+    &__final {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px 0;
+        font-size: 18px;
+        background-color: $secondary;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        strong{
+            margin-left: 10px;
+            font-size: 22px;
+        }
+    }
+
+    &__final-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 35px;
+        border: 2px solid $primary;
+        border-radius: 3px;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: color $s-delay, background $s-delay;
+        &:hover,&:focus{
+            background-color: $primary;
+            color: #fff;
         }
     }
 }

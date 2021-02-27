@@ -3,12 +3,29 @@
 $primary: #222222;
 
 $secondary: #f7ba15;
-$secondary-darker: #f79d15;
+$secondary-darker: #e99313;
 
 $tint: #525252;
 $tint-lighter: #d9d9d9;
+$tint-light: #F4F4F4;
 
 $shadow: rgba(0, 0, 0, 0.2);
 
 $s-delay: 0.4s;
 $l-delay: 0.8s;
+
+
+
+$shine-color: #d9d9d9b0 ;
+$shine-sweep-duration: 1.0s;
+$avatar-offset: 52 + 16;
+
+@keyframes skeleton-shine
+{
+    0%{
+        background-position: -100px
+    }
+    100%{
+        background-position: 400px
+    }
+}

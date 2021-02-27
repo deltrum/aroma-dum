@@ -56,20 +56,20 @@
     &__cart-btn {
         display: block;
         position: relative;
-        &:after {
-            content: "99";
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        span{
             position: absolute;
             bottom: -5px;
             right: -8px;
             width: 25px;
             height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
             background-color: $secondary;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         svg {

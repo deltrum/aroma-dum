@@ -7,13 +7,8 @@
                         <li class="header__item">
                             <nuxt-link class="header__link underline" :class="{ 'underline--active': $route.name === 'index' }" :to="{ name: 'index' }"> Home </nuxt-link>
                         </li>
-                    </ul>
-                    <ul class="header__list">
-                        <li class="header__item auth-btn auth-btn-reverse">
-                            <nuxt-link class="header__link" :to="{ name: 'auth-login' }"> Login </nuxt-link>
-                        </li>
-                        <li class="header__item auth-btn">
-                            <nuxt-link class="header__link" :to="{ name: 'auth-register' }"> Register </nuxt-link>
+                        <li class="header__item">
+                            <nuxt-link class="header__link underline" :class="{ 'underline--active': $route.name === 'cart' }" :to="{ name: 'cart' }"> Cart </nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -27,6 +22,7 @@
                         <img class="header__brand-logo-img" src="@/assets/images/brand-logo.png" />
                     </nuxt-link>
                     <nuxt-link class="header__cart-btn" :to="{ name: 'cart' }">
+                        <span>{{ cartLength }}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="40.135" height="35.804" viewBox="0 0 40.135 35.804">
                             <path
                                 id="shopping-cart"
@@ -43,9 +39,13 @@
 </template>
 
 <script lang="ts" >
-    import { Vue, Component } from 'vue-property-decorator'
-    import MobileNav from '@/components/MobileNav.vue'
+    import { Vue, Component } from 'vue-property-decorator';
+    import MobileNav from '@/components/MobileNav.vue';
 
     @Component({ name: 'Header', components: { MobileNav } })
-    export default class Header extends Vue {}
+    export default class Header extends Vue {
+        get cartLength() {
+            return this.$store.getters['modules/cart/getCartLength'];
+        }
+    }
 </script>

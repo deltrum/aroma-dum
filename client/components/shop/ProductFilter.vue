@@ -95,7 +95,7 @@
 </template>
 
 <script lang="ts" >
-    import { Vue, Component } from 'vue-property-decorator'
+    import { Vue, Component } from 'vue-property-decorator';
 
     @Component({ name: 'ProductFilter' })
     export default class ProductFilter extends Vue {
@@ -104,6 +104,6 @@
             brand: [] as Array<string>,
             height: [] as Array<string>,
             madeIn: [] as Array<string>,
-        }
+        };
     }
 </script>

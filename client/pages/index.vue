@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts" >
-    import { Vue, Component } from 'vue-property-decorator'
-    import ProductFilter from '@/components/shop/ProductFilter.vue'
-    import ProductSorter from '@/components/shop/ProductSorter.vue'
-    import Products from '@/components/shop/Products.vue'
+    import { Vue, Component } from 'vue-property-decorator';
+    import ProductFilter from '@/components/shop/ProductFilter.vue';
+    import ProductSorter from '@/components/shop/ProductSorter.vue';
+    import Products from '@/components/shop/Products.vue';
 
     @Component({
         name: 'Shop',

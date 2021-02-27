@@ -25,6 +25,7 @@ h5 {
 
 .underline {
     display: block;
+    font-weight: 500;
     position: relative;
     transition: color $s-delay;
     z-index: 1;
@@ -54,6 +55,7 @@ h5 {
 }
 
 .underline--active{
+    color: $primary!important;
     &:after {
         transform-origin: left;
         transform: scaleX(1);

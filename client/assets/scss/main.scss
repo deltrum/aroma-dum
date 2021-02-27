@@ -8,7 +8,6 @@
 @import "components/header";
 @import "components/footer";
 @import "components/mobile-nav";
-@import "components/page-path";
 
 @import "pages/shop";
 @import "components/shop/filter";
@@ -17,8 +16,6 @@
 @import "components/shop/pagination";
 
 @import "pages/cart";
-@import "components/auth/auth";
-
 
 // Media
 @import "media/LG-1023";

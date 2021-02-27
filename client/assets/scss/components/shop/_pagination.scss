@@ -21,7 +21,7 @@
         justify-content: center;
         width: 30px;
         height: 30px;
-        background-color: #e0e0e0;
+        background-color: $tint-lighter;
         border-radius: 6px;
         font-size: 18px;
         font-weight: 700;
@@ -30,20 +30,21 @@
 
         &:hover,
         &:focus {
-            background-color: $secondary-darker;
+            background-color: $tint;
             color: #fff;
         }
     }
 
     &__link--active {
-        background-color: $secondary-darker;
+        background-color: $tint;
+        color: #fff;
     }
 
     &__link--arrow {
         background-color: transparent;
         box-shadow: none;
         svg {
-            fill: $primary;
+            fill: $tint;
             transition: fill $s-delay;
         }
 
@@ -51,7 +52,7 @@
         &:focus {
             background-color: transparent;
             svg {
-                fill: $secondary-darker;
+                fill: $primary;
             }
         }
     }
