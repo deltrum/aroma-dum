@@ -1,18 +1,14 @@
 import { MutationTree, GetterTree } from 'vuex'
 
-interface Product {
-    id: number;
-    made_in: object;
-    bundle: Array<object>;
-    name: string;
-    slug_name: string;
-    price: number;
-    desc: string;
-    thumbnail: string
-}
+
 
 interface CartProduct {
-    product: Product;
+    product: {
+        id: number;
+        name: string;
+        price: number;
+        thumbnail: string;
+    };
     amount: number;
 }
 
@@ -23,12 +19,17 @@ export const state = () => ({
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
-    getCart: state => state.cart,
-    getCartLength: state => state.cart.length,
+    getCart(state): Array<CartProduct> {
+        return state.cart;
+    },
+
+    getCartCount(state): number {
+        return state.cart.length;
+    }
 }
 
 export const mutations: MutationTree<RootState> = {
-    mAddNewProductToCart(state, newItem: CartProduct) {
+    mAddNewProductToCart(state, newItem: CartProduct): void {
         let productInCart = state.cart.find(item => {
             return item.product.id == newItem.product.id
         })
@@ -41,7 +42,7 @@ export const mutations: MutationTree<RootState> = {
         state.cart.push(newItem)
     },
 
-    mSubtractCartProductAmount(state, existingItem: CartProduct) {
+    mSubtractCartProductAmount(state, existingItem: CartProduct): void {
         let productInCart = state.cart.find(item => {
             return item.product.id == existingItem.product.id
         })
@@ -53,7 +54,7 @@ export const mutations: MutationTree<RootState> = {
         }
     },
 
-    mRemoveFromCart(state, removeItem: CartProduct) {
+    mRemoveFromCart(state, removeItem: CartProduct): void {
         const index = state.cart.indexOf(removeItem);
         if (index > -1) {
             state.cart.splice(index, 1);

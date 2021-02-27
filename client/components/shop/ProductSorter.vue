@@ -30,7 +30,6 @@
     @Component({ name: 'ProductSorter' })
     export default class ProductSorter extends Vue {
         productSorterData = {
-            rating: false as boolean,
             price: false as boolean,
             new: false as boolean,
         };

@@ -1,7 +1,7 @@
 <template>
     <div class="products" id="Products">
-        <div class="products__items" v-if="!loadingState">
-            <article class="products__item" v-for="product in products" :key="product.id">
+        <div class="products__items" v-if="shopDataState">
+            <article class="products__item" v-for="product in pageProducts" :key="product.id">
                 <div class="products__item-img">
                     <nuxt-link class="products__item-img-img" to="#" :style="{ backgroundImage: 'url(' + product.thumbnail + ')' }"></nuxt-link>
                 </div>
@@ -29,27 +29,33 @@
 
     interface Product {
         id: number;
+        brand: object;
+        height: object;
         made_in: object;
-        bundle: Array<object>;
         name: string;
         slug_name: string;
         price: number;
-        desc: string;
-        thumbnail: string;
     }
 
     @Component({ name: 'Products', components: { Pagination } })
     export default class Products extends Vue {
-        get products() {
-            return this.$store.getters['modules/shop/getProducts'].results;
+        pageProducts = [] as Array<Product>;
+
+        get shopDataState(): boolean {
+            return this.$store.getters['modules/shop/getDataState'];
         }
 
-        get loadingState() {
-            return this.$store.getters['modules/shop/getLoadingState'];
+        addNewProductToCart(newCartItem: Product): void {
+            this.$store.commit('modules/cart/mAddNewProductToCart', {
+                product: { id: newCartItem.id, name: newCartItem.name, price: newCartItem.price, thumbnail: newCartItem.thumbnail },
+                amount: 1,
+            });
         }
 
-        addNewProductToCart(newCartItem: Product) {
-            this.$store.commit('modules/cart/mAddNewProductToCart', { product: { id: newCartItem.id, name: newCartItem.name, price: newCartItem.price, thumbnail: newCartItem.thumbnail }, amount: 1 });
+        created() {
+            this.$nuxt.$on('items-paginated', (data: Array<Product>) => {
+                this.pageProducts = data;
+            });
         }
     }
 </script>

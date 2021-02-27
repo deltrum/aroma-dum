@@ -5,45 +5,44 @@ interface Product {
     brand: object;
     height: object;
     made_in: object;
-    bundle: Array<object>;
     name: string;
     slug_name: string;
     price: number;
-    sold: boolean;
-    desc: string;
 }
 
 export const state = () => ({
     products: [] as Array<Product>,
-    loadingState: true as boolean,
+    dataState: false as boolean,
 })
 
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
-    getProducts: state => state.products,
-    getLoadingState: state => state.loadingState,
+    getProducts(state): Array<Product> {
+        return state.products;
+    },
 
+    getDataState(state): boolean {
+        return state.dataState;
+    }
 }
 
 export const mutations: MutationTree<RootState> = {
-    mChangeProducts(state, newData: Array<Product>) {
+    mChangeProducts(state, newData: Array<Product>): void {
         state.products = newData;
     },
-
-    mChangeLoadingState(state, newState: boolean) {
-        state.loadingState = newState;
-    }
-
+    mChangeDataState(state, newData: boolean): void {
+        state.dataState = newData;
+    },
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-    async fetchProductPage({ commit }, page: number) {
-        commit('mChangeLoadingState', true);
+    async fetchProducts({ commit }): Promise<void> {
+        commit('mChangeDataState', false);
         try {
-            const res = await this.$axios.$get(`${this.$axios.defaults.baseURL}/shop/api/products/?page=${page}`)
+            const res = await this.$axios.$get(`${this.$axios.defaults.baseURL}/shop/api/products/`)
             commit('mChangeProducts', res);
-            commit('mChangeLoadingState', false);
+            commit('mChangeDataState', true);
         } catch (error) {
             console.log(error);
         }

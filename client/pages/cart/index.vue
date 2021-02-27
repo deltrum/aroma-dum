@@ -4,7 +4,7 @@
             <div class="cart__inner">
                 <h4 class="cart__title">Cart</h4>
                 <div class="cart__products">
-                    <div class="cart__empty" v-if="!cartLength">
+                    <div class="cart__empty" v-if="!cartCount">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40.135" height="35.804" viewBox="0 0 40.135 35.804">
                             <path
                                 id="shopping-cart"
@@ -14,10 +14,14 @@
                         </svg>
                         <h4 class="cart__empty-title">You haven't added anything to your cart.</h4>
                     </div>
-                    <div class="cart__list" v-if="cartLength">
+                    <div class="cart__list" v-if="cartCount">
                         <article class="cart__item" v-for="product in cartProducts" :key="product.id">
                             <div class="cart__item-img">
-                                <nuxt-link class="cart__item-img-img" :style="{ backgroundImage: 'url(' + product.product.thumbnail + ')' }" to="#"></nuxt-link>
+                                <nuxt-link
+                                    class="cart__item-img-img"
+                                    :style="{ backgroundImage: 'url(' + product.product.thumbnail + ')' }"
+                                    to="#"
+                                ></nuxt-link>
                             </div>
                             <div class="cart__item-content">
                                 <h5 class="cart__item-title">{{ product.product.name }}</h5>
@@ -31,14 +35,21 @@
                                 <span class="cart__item-amount-number">{{ product.amount }}</span>
                                 <button class="cart__item-amount-btn" @click="addCartProductAmount(product)">
                                     <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M11.703 6.22245V4.62244H7.05303V0.222445H5.40303V4.62244H0.753027V6.22245H5.40303V10.6474H7.02803V6.22245H11.703Z" fill="black" />
+                                        <path
+                                            d="M11.703 6.22245V4.62244H7.05303V0.222445H5.40303V4.62244H0.753027V6.22245H5.40303V10.6474H7.02803V6.22245H11.703Z"
+                                            fill="black"
+                                        />
                                     </svg>
                                 </button>
                             </div>
                             <div class="cart__item-price">{{ product.product.price }} $ / 1</div>
                             <button class="cart__item-delete-btn" @click="removeFromCart(product)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30.585" height="30.585" viewBox="0 0 30.585 30.585">
-                                    <path id="close" d="M18.095,15.429,30,3.519a1.981,1.981,0,1,0-2.8-2.8l-11.91,11.91L3.383.717a1.981,1.981,0,0,0-2.8,2.8l11.909,11.91L.581,27.338a1.981,1.981,0,1,0,2.8,2.8L15.292,18.23,27.2,30.14a1.981,1.981,0,1,0,2.8-2.8Zm0,0" transform="translate(0 -0.136)" />
+                                    <path
+                                        id="close"
+                                        d="M18.095,15.429,30,3.519a1.981,1.981,0,1,0-2.8-2.8l-11.91,11.91L3.383.717a1.981,1.981,0,0,0-2.8,2.8l11.909,11.91L.581,27.338a1.981,1.981,0,1,0,2.8,2.8L15.292,18.23,27.2,30.14a1.981,1.981,0,1,0,2.8-2.8Zm0,0"
+                                        transform="translate(0 -0.136)"
+                                    />
                                 </svg>
                             </button>
                         </article>
@@ -61,19 +72,13 @@
 <script lang="ts" >
     import { Vue, Component } from 'vue-property-decorator';
 
-    interface Product {
-        id: number;
-        made_in: object;
-        bundle: Array<object>;
-        name: string;
-        slug_name: string;
-        price: number;
-        sold: boolean;
-        desc: string;
-    }
-
     interface CartProduct {
-        product: Product;
+        product: {
+            id: number;
+            name: string;
+            price: number;
+            thumbnail: string;
+        };
         amount: number;
     }
 
@@ -83,8 +88,8 @@
             return this.$store.getters['modules/cart/getCart'];
         }
 
-        get cartLength(): number {
-            return this.$store.getters['modules/cart/getCartLength'];
+        get cartCount(): number {
+            return this.$store.getters['modules/cart/getCartCount'];
         }
 
         get finalPrice(): number {
@@ -96,15 +101,15 @@
             return finalPrice;
         }
 
-        addCartProductAmount(item: CartProduct) {
+        addCartProductAmount(item: CartProduct): void {
             this.$store.commit('modules/cart/mAddNewProductToCart', item);
         }
 
-        subtractCartProductAmount(item: CartProduct) {
+        subtractCartProductAmount(item: CartProduct): void {
             this.$store.commit('modules/cart/mSubtractCartProductAmount', item);
         }
 
-        removeFromCart(item: CartProduct) {
+        removeFromCart(item: CartProduct): void {
             this.$store.commit('modules/cart/mRemoveFromCart', item);
         }
     }

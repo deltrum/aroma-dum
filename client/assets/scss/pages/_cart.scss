@@ -22,11 +22,11 @@
         overflow: hidden;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
-        min-height: 400px;
+        min-height: 600px;
     }
 
     &__empty{
-        height: 400px;
+        height: 600px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -143,7 +143,6 @@
         }
     }
 
-    
     &__final {
         display: flex;
         align-items: center;

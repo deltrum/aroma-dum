@@ -89,7 +89,7 @@
         </div>
 
         <div class="filter__section">
-            <button class="filter__reset-btn primary-btn">Reset filter</button>
+            <button class="filter__reset-btn primary-btn" @click="resetProductFilterData()">Reset filter</button>
         </div>
     </div>
 </template>
@@ -105,5 +105,14 @@
             height: [] as Array<string>,
             madeIn: [] as Array<string>,
         };
+
+        resetProductFilterData() {
+            this.productFilterData = {
+                price: [0, 10000],
+                brand: [],
+                height: [],
+                madeIn: [],
+            };
+        }
     }
 </script>

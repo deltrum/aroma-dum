@@ -30,7 +30,7 @@
 
     @Component({ name: 'MobileNav' })
     export default class MobileNav extends Vue {
-        toggleMobileNav() {
+        toggleMobileNav(): void {
             let hamburgerBtn = document.getElementsByClassName('mobile-nav__hamburger')[0];
             let mobileNav = document.getElementsByClassName('mobile-nav__menu')[0];
 
