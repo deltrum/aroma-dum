@@ -8,6 +8,7 @@ interface Product {
     name: string;
     slug_name: string;
     price: number;
+    thumbnail: string;
 }
 
 export const state = () => ({

@@ -41,6 +41,7 @@
         name: string;
         slug_name: string;
         price: number;
+        thumbnail: string;
     }
 
     @Component({ name: 'Pagination' })
