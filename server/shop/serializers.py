@@ -24,12 +24,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ProductViewSerializer(serializers.ModelSerializer):
     made_in = ProductPropSerializer(read_only=True, many=False)    
-    height = ProductPropSerializer(read_only=True, many=False)
     name = serializers.SerializerMethodField()
     
     class Meta:
         model = Product
-        fields = ['id', 'slug_name', 'thumbnail', 'name', 'desc', 'price', 'made_in','height']
+        fields = ['id', 'slug_name', 'thumbnail', 'name', 'desc', 'price', 'brand', 'made_in']
 
     def get_name(self, obj):
-        return '{} {}'.format(obj.brand, obj.name) 
+        return '{} {} {}'.format(obj.brand, obj.name, obj.height) 

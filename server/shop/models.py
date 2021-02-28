@@ -22,11 +22,6 @@ class ProductHeight(models.Model):
     def __str__(self):
         return self.name
 
-class ProductBundle(models.Model):
-    name = models.CharField(max_length=30)
-    def __str__(self):
-        return self.name
-
 class Product(models.Model):
     sold = models.BooleanField(default=False)
     thumbnail = models.FileField(upload_to='products', max_length=100, null=True, blank=True)
@@ -35,7 +30,6 @@ class Product(models.Model):
     price = models.FloatField()
     desc = RichTextField(blank=True, null=True)
 
-    bundle = models.ManyToManyField(ProductBundle, blank=True)
     height = models.ForeignKey(ProductHeight, on_delete=models.SET_NULL, null=True)
     made_in = models.ForeignKey(ProductCountry, on_delete=models.SET_NULL, null=True)
     brand = models.ForeignKey(ProductBrand, on_delete=models.SET_NULL, null=True)
