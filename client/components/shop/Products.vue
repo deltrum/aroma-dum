@@ -29,9 +29,15 @@
 
     interface Product {
         id: number;
-        brand: object;
-        height: object;
-        made_in: object;
+        brand: {
+            name: string;
+        };
+        height: {
+            name: string;
+        };
+        made_in: {
+            name: string;
+        };
         name: string;
         slug_name: string;
         price: number;

@@ -47,7 +47,7 @@
     @Component({ name: 'Pagination' })
     export default class Pagination extends Vue {
         currentPage = 1 as number;
-        perPage = 1 as number;
+        perPage = 6 as number;
         pageCount = [] as Array<number>;
         productsRef = [] as Array<Product>;
 
@@ -75,6 +75,10 @@
             if (this.products.length > 0) {
                 this.productsRef = this.products.slice();
                 this.paginationManager();
+            } else {
+                this.pageCount = [];
+                this.currentPage = 1;
+                this.$nuxt.$emit('items-paginated', this.products);
             }
         }
 
@@ -87,9 +91,9 @@
 
         paginate(): void {
             // Adding for from 1 to infinitty order
-            let pagesNumber = Math.ceil(this.productsRef.length / this.perPage) + 1;
+            let pageCountNumber: number = Math.ceil(this.productsRef.length / this.perPage) + 1;
 
-            for (let i: number = 1; i < pagesNumber; i++) {
+            for (let i: number = 1; i < pageCountNumber; i++) {
                 this.pageCount.push(i);
             }
         }
@@ -105,8 +109,8 @@
                 pageItems = this.productsRef;
             } else {
                 // Subtracting 1 to order from 1
-                let startScope = this.perPage * (this.currentPage - 1);
-                let endScope = startScope + this.perPage;
+                let startScope: number = this.perPage * (this.currentPage - 1);
+                let endScope: number = startScope + this.perPage;
                 pageItems = this.productsRef.slice(startScope, endScope);
             }
             if (pageItems.length > 0) {

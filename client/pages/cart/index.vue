@@ -92,13 +92,13 @@
             return this.$store.getters['modules/cart/getCartCount'];
         }
 
-        get finalPrice(): number {
+        get finalPrice(): string {
             let finalPrice = 0;
             for (const item of this.cartProducts) {
                 finalPrice += item.product.price * item.amount;
             }
 
-            return finalPrice;
+            return finalPrice.toFixed(2);
         }
 
         addCartProductAmount(item: CartProduct): void {
