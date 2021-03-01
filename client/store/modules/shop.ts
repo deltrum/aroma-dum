@@ -19,14 +19,13 @@ interface Product {
 
 export const state = () => ({
     products: [] as Array<Product>,
-    maxProductPrice: 0 as number,
     dataState: false as boolean,
-    sortedProducts: [] as Array<Product>,
+    maxProductPrice: 0 as number,
     filteredProducts: [] as Array<Product>,
     sortBy: {
-        price: true as boolean,
-        new: true as boolean,
-    },
+        price: '' as string,
+        new: '' as string,
+    }
 })
 
 export type RootState = ReturnType<typeof state>
@@ -40,16 +39,14 @@ export const getters: GetterTree<RootState, RootState> = {
         return state.dataState;
     },
 
-    getSortedProducts(state): Array<Product> {
-        return state.sortedProducts;
-    },
-
     getMaxProductPrice(state): number {
         return state.maxProductPrice;
     }
 }
 
 export const mutations: MutationTree<RootState> = {
+
+    // Product & its state
     mProducts(state, newData: Array<Product>): void {
         state.products = newData;
     },
@@ -58,25 +55,26 @@ export const mutations: MutationTree<RootState> = {
         state.dataState = newData;
     },
 
-    mSortedProducts(state, newData: Array<Product>): void {
-        state.sortedProducts = newData;
+    mMaxProductPrice(state, newData: number): void {
+        state.maxProductPrice = newData;
     },
 
-    mSortByPrice(state, newData: boolean): void {
+
+    // Sorter
+    mSortByPrice(state, newData: string): void {
         state.sortBy.price = newData;
     },
 
-    mSortByNew(state, newData: boolean): void {
+    mSortByNew(state, newData: string): void {
         state.sortBy.new = newData;
     },
 
+
+    // Filtration
     mFilteredProducts(state, newData: Array<Product>): void {
         state.filteredProducts = newData;
     },
 
-    mMaxProductPrice(state, newData: number): void {
-        state.maxProductPrice = newData;
-    },
 }
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -86,8 +84,6 @@ export const actions: ActionTree<RootState, RootState> = {
             const res = await this.$axios.$get(`${this.$axios.defaults.baseURL}/shop/api/products/`)
             commit('mProducts', res);
             dispatch('getHighestPrice', res);
-            dispatch('sortByPrice', state.sortBy.price);
-            dispatch('sortByNew', state.sortBy.new);
             commit('mDataState', true);
         } catch (error) {
             console.log(error);
@@ -99,17 +95,19 @@ export const actions: ActionTree<RootState, RootState> = {
         commit('mMaxProductPrice', maxPrice);
     },
 
-    sortByPrice(context, sortByState: boolean): void {
+
+    sortByPrice(context, sortByState: string): void {
         context.commit('mSortByPrice', sortByState);
+
         var productsToSort: Array<Product> = context.state.filteredProducts.slice();
 
-        if (sortByState === false) {
+        if (sortByState === 'lowest') {
             productsToSort.sort(function (a: Product, b: Product) {
                 return a.price - b.price;
             });
         }
 
-        if (sortByState === true) {
+        if (sortByState === 'highest') {
             productsToSort.sort(function (a: Product, b: Product) {
                 return b.price - a.price;
             });
@@ -117,21 +115,25 @@ export const actions: ActionTree<RootState, RootState> = {
         context.commit('mFilteredProducts', productsToSort);
     },
 
-    sortByNew(context, sortByState: boolean): void {
+
+    sortByNew(context, sortByState: string): void {
         context.commit('mSortByNew', sortByState);
+
+
         var productsToSort: Array<Product> = context.state.filteredProducts.slice();
 
-        if (sortByState === false) {
+        if (sortByState === 'oldest') {
             productsToSort.sort(function (a: Product, b: Product) {
                 return a.id - b.id;
             });
         }
 
-        if (sortByState === true) {
+        if (sortByState === 'newest') {
             productsToSort.sort(function (a: Product, b: Product) {
                 return b.id - a.id;
             });
         }
+
         context.commit('mFilteredProducts', productsToSort);
     },
 
@@ -150,6 +152,12 @@ export const actions: ActionTree<RootState, RootState> = {
         })
 
         commit('mFilteredProducts', filteredData);
-        dispatch('sortByPrice', state.sortBy.price);
+
+        if (state.sortBy.price != '') {
+            dispatch('sortByPrice', state.sortBy.price)
+        }
+        if (state.sortBy.new != '') {
+            dispatch('sortByNew', state.sortBy.new)
+        }
     },
 }

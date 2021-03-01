@@ -13,7 +13,12 @@
                 </a>
             </li>
             <li class="pagination__item" v-for="i in pageCount" :key="i" @click="currentPage = i">
-                <a class="pagination__link" :class="{ 'pagination__link--active': currentPage == i }" href="#Products">{{ i }}</a>
+                <a
+                    class="pagination__link"
+                    :class="{ 'pagination__link--active': currentPage == i }"
+                    href="#Products"
+                    >{{ i }}</a
+                >
             </li>
             <li class="pagination__item" v-if="products.next" @click="probeNextPage()">
                 <a class="pagination__link pagination__link--arrow" href="#Products">
