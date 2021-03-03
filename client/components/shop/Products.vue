@@ -3,9 +3,11 @@
         <div class="products__items" v-if="shopDataState">
             <article class="products__item" v-for="product in pageProducts" :key="product.id">
                 <div class="products__item-img">
-                    <nuxt-link class="products__item-img-img" to="#" :style="{ backgroundImage: 'url(' + product.thumbnail + ')' }"></nuxt-link>
+                    <div class="products__item-img-img" :style="{ backgroundImage: 'url(' + product.thumbnail + ')' }"></div>
                 </div>
-                <h3 class="products__item-title">{{ product.name }}</h3>
+                <h3 class="products__item-title">
+                    {{ product.name }}
+                </h3>
                 <div class="products__item-price">{{ product.price }} $</div>
                 <button class="buy-btn" @click="addNewProductToCart(product)">Add to cart</button>
             </article>
@@ -39,7 +41,6 @@
             name: string;
         };
         name: string;
-        slug_name: string;
         price: number;
         thumbnail: string;
     }

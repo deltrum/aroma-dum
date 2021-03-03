@@ -12,7 +12,6 @@ interface Product {
         name: string,
     };
     name: string;
-    slug_name: string;
     price: number;
     thumbnail: string;
 }
@@ -59,7 +58,6 @@ export const mutations: MutationTree<RootState> = {
         state.maxProductPrice = newData;
     },
 
-
     // Sorter
     mSortByPrice(state, newData: string): void {
         state.sortBy.price = newData;
@@ -69,7 +67,6 @@ export const mutations: MutationTree<RootState> = {
         state.sortBy.new = newData;
     },
 
-
     // Filtration
     mFilteredProducts(state, newData: Array<Product>): void {
         state.filteredProducts = newData;
@@ -78,12 +75,13 @@ export const mutations: MutationTree<RootState> = {
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-    async fetchProducts({ commit, dispatch, state }): Promise<void> {
+    async fetchProducts({ commit, dispatch }): Promise<void> {
         commit('mDataState', false);
+
         try {
-            const res = await this.$axios.$get(`${this.$axios.defaults.baseURL}/shop/api/products/`)
-            commit('mProducts', res);
-            dispatch('getHighestPrice', res);
+            const result = await this.$axios.$get(`${this.$axios.defaults.baseURL}/shop/api/products/`)
+            commit('mProducts', result);
+            dispatch('getHighestPrice', result);
             commit('mDataState', true);
         } catch (error) {
             console.log(error);
@@ -94,7 +92,6 @@ export const actions: ActionTree<RootState, RootState> = {
         let maxPrice: number = Math.max.apply(Math, products.map(function (item) { return item.price; })) + 1;
         commit('mMaxProductPrice', maxPrice);
     },
-
 
     sortByPrice(context, sortByState: string): void {
         context.commit('mSortByPrice', sortByState);
@@ -115,10 +112,8 @@ export const actions: ActionTree<RootState, RootState> = {
         context.commit('mFilteredProducts', productsToSort);
     },
 
-
     sortByNew(context, sortByState: string): void {
         context.commit('mSortByNew', sortByState);
-
 
         var productsToSort: Array<Product> = context.state.filteredProducts.slice();
 
@@ -136,7 +131,6 @@ export const actions: ActionTree<RootState, RootState> = {
 
         context.commit('mFilteredProducts', productsToSort);
     },
-
 
     filterByCategories({ state, commit, dispatch }, categories): void {
         let filteredData = [] as Array<Product>;

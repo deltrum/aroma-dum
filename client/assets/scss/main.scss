@@ -1,3 +1,4 @@
+@import 'libs';
 @import "default";
 @import "vars";
 @import "fonts";
@@ -8,13 +9,11 @@
 @import "components/header";
 @import "components/footer";
 @import "components/mobile-nav";
-
-@import "pages/shop";
+@import "pages/index";
 @import "components/shop/filter";
 @import "components/shop/sorter";
 @import "components/shop/products";
 @import "components/shop/pagination";
-
 @import "pages/cart";
 
 // Media

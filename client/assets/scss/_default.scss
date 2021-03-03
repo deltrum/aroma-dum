@@ -1,30 +1,41 @@
-/*===== Default styling =====*/
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
-body {
-    width: 100%;
-    min-width: 350px;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-.wrapper {
-    min-height: 100vh;
-}
-
 *,
-*:after,
-*:after {
+*::after,
+*::before {
     box-sizing: inherit;
+}
+
+body {
+    min-width: 320px;
+    overflow-x: hidden;
+    position: relative;
+    color: #fff;
 }
 
 a {
     text-decoration: none;
     color: inherit;
     line-height: inherit;
+}
+
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    margin: 0;
+    font-size: inherit;
 }
 
 button,
@@ -44,4 +55,8 @@ select {
 
 strong {
     font-weight: bold;
+}
+
+.wrapper {
+    min-height: 100vh;
 }

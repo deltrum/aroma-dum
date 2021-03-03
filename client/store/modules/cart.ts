@@ -1,7 +1,5 @@
 import { MutationTree, GetterTree } from 'vuex'
 
-
-
 interface CartProduct {
     product: {
         id: number;

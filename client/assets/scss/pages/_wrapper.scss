@@ -1,12 +1,11 @@
-/*===== Wrapper styling =====*/
 .wrapper {
     display: grid;
     grid-template-areas:
         "header"
         "main"
         "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: 120px 1fr auto;
+    grid-template-columns: minmax(0px, 1fr);
+    grid-template-rows: 120px minmax(0px, 1fr) auto;
 }
 
 .header {

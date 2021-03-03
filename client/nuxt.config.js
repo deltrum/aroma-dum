@@ -15,7 +15,6 @@ export default {
   },
 
   css: [
-    '@/assets/css/reset.css',
     '@/assets/css/main.min.css',
   ],
 

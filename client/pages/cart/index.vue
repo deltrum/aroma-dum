@@ -17,11 +17,7 @@
                     <div class="cart__list" v-if="cartCount">
                         <article class="cart__item" v-for="product in cartProducts" :key="product.id">
                             <div class="cart__item-img">
-                                <nuxt-link
-                                    class="cart__item-img-img"
-                                    :style="{ backgroundImage: 'url(' + product.product.thumbnail + ')' }"
-                                    to="#"
-                                ></nuxt-link>
+                                <div class="cart__item-img-img" :style="{ backgroundImage: 'url(' + product.product.thumbnail + ')' }"></div>
                             </div>
                             <div class="cart__item-content">
                                 <h5 class="cart__item-title">{{ product.product.name }}</h5>
