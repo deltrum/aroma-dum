@@ -16,19 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Product
-        fields = ['id', 'made_in', 'name', 'thumbnail', 'slug_name', 'price', 'brand', 'height']
-
-    def get_name(self, obj):
-        return '{} {} {}'.format(obj.brand, obj.name, obj.height) 
-
-
-class ProductViewSerializer(serializers.ModelSerializer):
-    made_in = ProductPropSerializer(read_only=True, many=False)    
-    name = serializers.SerializerMethodField()
-    
-    class Meta:
-        model = Product
-        fields = ['id', 'slug_name', 'thumbnail', 'name', 'desc', 'price', 'brand', 'made_in']
+        fields = ['id', 'made_in', 'name', 'thumbnail', 'price', 'brand', 'height']
 
     def get_name(self, obj):
         return '{} {} {}'.format(obj.brand, obj.name, obj.height) 

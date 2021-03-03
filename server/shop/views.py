@@ -21,14 +21,3 @@ def Products(request):
     if request.method == "GET":
         serializers = ProductSerializer(products, many=True, context={"request": request})
         return Response(serializers.data)
-
-@api_view(['GET'])
-def ProductView(request, pk):
-    try:
-        product = Product.objects.get(id = pk)
-    except Product.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == "GET":
-        serializers = ProductViewSerializer(product, many=False, context={"request": request})
-        return Response(serializers.data)
